@@ -3,6 +3,7 @@
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
+import numpy as np
 
 def print_hi(name):
     for i in name:
@@ -81,14 +82,115 @@ def read_file(str):
     for x in f:
         print(x)
 
+
 def sum_2_num(a, b):
     return a+b
 
 
-# def check_rank_matrix(matrix):
-
-
+def create_matrix():
+    matrix = np.array([[1, 2, 3],
+                       [4, 5, 6],
+                       [7, 8, 9]])
+    return matrix
 # Press the green button in the gutter to run the script.
+
+def create_vector():
+    vector = np.array([1, 2, 3])
+    return vector
+
+def check_rank_matrix():
+    m = create_matrix()
+    m_rank = np.linalg.matrix_rank(m)
+    print("Rank of matrix: " + f'{m_rank}')
+
+def check_rank_vector():
+    v = create_vector()
+    v_rank = np.linalg.matrix_rank(v)
+    print("Rank of vector: " + f'{v_rank}')
+
+
+def check_shape_matrix():
+    m = create_matrix()
+    print("Shape of matrix: " + f'{m.shape}')
+
+def check_shape_vector():
+    v = create_vector()
+    print("Shape of vector: " + f'{v.shape}')
+
+
+def matrix_plus(n):
+    m = create_matrix()
+    print("New matrix:\n " + f'{m+n}')
+
+
+def matrix_transpose():
+    m = create_matrix()
+    return np.transpose(m)
+
+def vector_transpose():
+    v = create_vector()
+    return np.transpose(v)
+
+def norm_vector():
+    v = np.array([2, 7])
+    print(v)
+    norm = np.linalg.norm(v)
+    print("Norm of vector: " + f'{norm}')
+    print("Normalized = " + f'{v/norm}')
+
+
+def plus_minus():
+    a = np.array([10,15])
+    b = np.array([8,2])
+    c = np.array([1,2,3])
+    print(f'a = {a}\nb = {b}\nc = {c}')
+    print(f'a + b = {a+b}')
+    print(f'a - b = {a-b}')
+    print(f'a - c: error dimensions of a and c are different. ')
+
+def dot_product():
+    a = np.array([10, 15])
+    b = np.array([8, 2])
+    dot = np.dot(a,b)
+    print(f'Dot product: {dot}')
+
+
+def ex_8():
+    # a
+    A = np.array([[2, 4, 9],
+                  [3, 6, 7]])
+    print("a/")
+    print(A)
+    print("Rank of matrix A:", np.linalg.matrix_rank(A))
+    print("Shape of matrix A:", A.shape)
+
+    # b
+    value_7 = A[1, 2]
+    print("Value 7 in matrix A:", value_7)
+
+    # c
+    second_column_A = A[:, 1]
+    print("Second column of matrix A:", second_column_A)
+
+
+def create_rand_matrix():
+    return np.random.randint(-10, 10, size=(3, 3))
+
+
+def create_id_rand_matrix():
+    print(f'Id matrix: {np.eye(3)}')
+
+
+def ex_11():
+    # a
+    m = np.random.randint(1, 10, size=(3, 3))
+    print("W1: ", np.trace(m))
+    # b
+    m2 = 0
+    for i in range(3):
+        m2 += m[i, i]
+    print("W2: ", m2)
+
 
 if __name__ == '__main__':
     # print_hi('Mai Trần Nhật Tuấn')
@@ -105,6 +207,20 @@ if __name__ == '__main__':
     # age = [23, 10, 80]
     # print_soft_megre(name, age)
 
-    read_file("Tuan.txt")
+    # read_file("Tuan.txt")
 
     # print(sum_2_num(3,4))
+
+    # check_rank_matrix()
+    # check_rank_vector()
+    # check_shape_matrix()
+    # check_shape_vector()
+    #
+    # matrix_plus(3)
+    # print(matrix_transpose())
+    # print(vector_transpose())
+
+    # norm_vector()
+    # plus_minus()
+    # dot_product()
+    ex_8()
